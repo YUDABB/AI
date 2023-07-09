@@ -1,0 +1,41 @@
+#include <Wire.h>
+#include "COCOCAM.h"
+#include "SoftwareSerial.h"
+
+COCOCAM cococam;
+cococamResult result;
+
+void setup() {
+  Serial.begin(9600);
+  Wire.begin();
+  cococam.begin(Wire);
+  // 얼굴인식 알고리즘으로 전환
+  cococam.writeAlgorithm(ALGORITHM_FACE_RECOGNITION);
+}
+
+void loop() {
+
+  cococam.request();
+  while (cococam.available()) {
+    result = cococam.read();
+    getFaceFingerPrintInfo();
+  }
+}
+
+void getFaceFingerPrintInfo()
+{
+  int faceID;
+  int i;
+  cococamResult result;
+    if(cococam.request()) {
+      result = cococam.read();
+      if(result.ID > 0) {
+        faceID = result.ID;
+        Serial.println(faceID);
+        delay(2000);
+      }
+    }
+}
+
+
+

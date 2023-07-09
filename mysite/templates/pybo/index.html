@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% load pybo_filter %}
+{% block content%}
+<section>
+<div class="container my-3">
+  <h2>공지사항</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>번호</th>
+        <th>제목</th>
+        <th>글쓴이</th>
+        <th>작성일</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% if q_list %}
+      {%for q in q_list %}
+      <tr>
+        <td>{{forloop.counter}}</td>
+        <td>
+          <!-- 이부분이 글마다 넘버링 보이게함-->
+          <a href="{% url 'pybo:detail' q.id%}">{{q.subject}}</a>
+          {% if q.answer_set.count > 0 %}
+          <span class="text-danger small ml-2">
+            [{{q.answer_set.count}}]
+          </span>
+          {%endif%}
+
+        </td>
+        <td>{{q.author.username}}</td>
+        <td>{{q.create_date}}</td>
+      </tr>
+      {%endfor%}
+      {%else%}
+      <tr>
+        <td colspan="3">질문이 없습니다.</td>
+      </tr>
+    {% endif %}
+    </tbody>
+  </table>
+
+  <ul class="pagination justify-content-center">
+        <!-- 이전페이지 -->
+        {% if q_list.has_previous %}
+        <li class="page-item">
+            <a class="page-link" data-page="{{ q_list.previous_page_number }}" href="?page={{q_list.previous_page_number}}">이전</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
+        </li>
+        {% endif %}
+        <!-- 페이지리스트 -->
+        {% for page_number in q_list.paginator.page_range %}
+        {% if page_number >= q_list.number|add:-5 and page_number <= q_list.number|add:5 %}
+            {% if page_number == q_list.number %}
+            <li class="page-item active" aria-current="page">
+                <a class="page-link" data-page="{{ page_number }}" href="?page={{page_number}}">{{ page_number }}</a>
+            </li>
+            {% else %}
+            <li class="page-item">
+                <a class="page-link" data-page="{{ page_number }}" href="?page={{page_number}}">{{ page_number }}</a>
+            </li>
+            {% endif %}
+        {% endif %}
+        {% endfor %}
+        <!-- 다음페이지 -->
+        {% if q_list.has_next %}
+        <li class="page-item">
+            <a class="page-link" data-page="{{ q_list.next_page_number }}" href="?page={{q_list.next_page_number}}">다음</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a class="page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
+        </li>
+        {% endif %}
+
+
+    <br><br>
+
+  </ul>
+
+    {% if user.is_superuser %}
+    <a href="{% url 'pybo:q_register'%}" class="btn btn-primary">공지 등록</a>
+    {% endif %}
+</div>
+</section>
+{% endblock %}

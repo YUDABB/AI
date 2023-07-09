@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div style="margin: 3%">
+<div>
+    <h2>{{q_data.subject_name}} 출결 리스트</h2>
+</div>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>번호</th>
+        <th>학생이름</th>
+          <th>오늘 출석 현황</th>
+        <th>출석현황</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% if s_check %}
+    {%for s in s_check %}
+     {% if q_data.subject_id == s.subject_id_id %}
+      <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{s.student_name}}</td>
+          <td>{{d_c}}</td>
+        <td>출석 :{{s.p_c}}  결석 : {{s.f_c}} 지각 : {{s.r_c}}</td>
+      </tr>
+    {% endif %}
+      {%endfor%}
+      {%else%}
+      <tr>
+        <td colspan="3">질문이 없습니다.</td>
+      </tr>
+    {% endif %}
+    </tbody>
+  </table>
+{% endblock %}
+</div>

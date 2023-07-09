@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content%}
+<section>
+<div class="container my-3">
+    {% if user.is_authenticated %}
+    <h3><b>{{user.last_name}}{{user.first_name}}님 출석 리스트</b></h3><br>
+    {% else %}
+    <h3 class="w3-padding-64 w3-center"><b>로그인 해주십시오.</b></h3>
+    {%endif%}
+    <table class="table table-striped">
+    <thead>
+        <tr>
+        <th>번호</th>
+            <th>과목명</th>
+        <th>출석여부</th>
+        <th>날짜 및 시간</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% if t_check %}
+        {% for t in t_check %}
+        {% if t.face_id == user.id or user.id == 1 %}
+        <tr>
+        <td><p>{{forloop.counter}}</p></td>
+            {% if subj %}
+                {% for sub in subj %}
+                    {% if sub.subject_id == t.subject_id %}
+            <td><p>{{sub.subject_name}}</p></td>
+                   {% endif %}
+                {% endfor %}
+            {% endif %}
+            {% if t.pfr == 2 %}
+            <td><p>출석</p></td>
+            {% elif t.pfr == 1 %}
+            <td><p>지각</p></td>
+            {% else %}
+            <td><p>결석</p></td>
+            {% endif %}
+        <td><p>{{t.c_date}}</p></td>
+      </tr>
+      {% endif %}
+      {% endfor %}
+      {% else %}
+        <tr>
+        <td colspan="3">출석 현황이 없습니다.</td>
+        </tr>
+    {% endif %}
+    </tbody>
+    </table>
+</div>
+</section>
+{% endblock %}

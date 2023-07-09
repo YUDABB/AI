@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content%}
+<section>
+<div class="container my-3">
+  <h2 class="border-bottom py-2">게시판_상세보기({{q_data.subject}})</h2>
+  <p>The .table-striped class adds zebra-stripes to a table:</p>
+  <div class="card my-3">
+    <div class="card-body">
+      <div class="card-text" style="white-space:pre-line">
+        {{q_data.content}}
+      </div>
+
+    </div>
+
+
+  <hr>
+  {% if request.user == q_data.author %}
+      <a href="{% url 'pybo:up' q_data.id%}">수정</a> , <a href="#" class="delete" data-uri="{% url 'pybo:delete' q_data.id%}">삭제</a>
+  {% endif%}
+</div>
+  <h5>{{q_data.answer_set.count}}개의 답변이 있습니다.</h5>
+  <div>
+    <ul>
+      {%for answer in q_data.answer_set.all %}
+        <div style="border: 10px solid white"> {{answer.content}}</div>
+      {%endfor%}
+    </ul>
+
+  </div>
+
+  <form action="{% url 'pybo:a_register' q_data.id%}" method="post">
+    {% csrf_token %}
+    {% include "form_errors.html" %}
+    <textarea name="content" id="content" {%if not user.is_authenticated %} disabled{%endif%} rows="15"></textarea>
+    <input type="submit" value="답변등록">
+  </form>
+</section>
+{% endblock %}
+{% block script %}
+      </div>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $(".delete").on('click',function() {
+        if(confirm("정말로 삭제하시겠습니까?")){
+          location.href=$(this).data('uri');
+        }
+      });
+
+    });
+
+  </script>
+{% endblock%}

@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block content%}
+<div class="container my-3">
+    <div class="row">
+        <div class="col-9">
+            <h1>{{user.last_name}}{{user.first_name}}님의 출튀 리스트</h1><br>
+            <h4><em>잡았다 요놈! 너는 F다</em></h4>
+
+
+
+            <p>
+                  <table class="table">
+    <thead>
+      <tr>
+        <th>번호</th>
+           <th>과목</th>
+        <th>학생 이름</th>
+        <th>시간</th>
+        <th>외출한 시각</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    {% for p in p_check %}
+        {% if p.professor_id_id == user.id or 1 == user.id %}
+                {% if t_check %}
+                    {%for t in t_check %}
+                        {% if t.out_times %}
+                        {% if t.subject_id == p.subject_id_id %}
+                            <tr>
+                                <td>{{forloop.counter}}</td>
+                                {% for sub in subj %}
+                                {% if t.subject_id == sub.subject_id %}
+                                <td>{{sub.subject_name}}</td>
+                                {% endif %}
+                                {% endfor %}
+                                {% for s in s_check %}
+                                {% if s.student_id_id == t.face_id and s.subject_id_id == t.subject_id %}
+                                <td>{{s.student_name}}</td>
+                                {% endif %}
+                                {% endfor %}
+                                <td>{{t.c_date|date:'Y-m-d H:i'}}</td>
+                                <td>{{t.out_times}}분 외출했습니다.</td>
+                            </tr>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+        {% endif %}
+    {% endfor %}
+    </tbody>
+  </table>
+
+            </p>
+        </div>
+           <div class="col-3">
+            <img src="">
+        </div>
+    </div>
+
+
+</div>
+{% endblock %}

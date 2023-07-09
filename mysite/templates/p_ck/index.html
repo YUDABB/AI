@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div style="margin: 3%">
+    <div>
+        <h3>{{user.last_name}}{{user.first_name}}님의 수업 리스트</h3>
+        <p>{{s_count}}개의 수업을 확인했습니다</p>
+    </div>
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>과목</th>
+            <th>출석 확인</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% if s_check %}
+        {% for s in s_check %}
+        {% if user.id == s.professor_id_id or user.id == 1 %}
+
+          <tr>
+            <td><p>{{s.subject_name}}</p></td>
+            <td><button><a href="{% url 'p_ck:detail' s.id%}">출석확인버튼</a></button></td>
+          </tr>
+        {% endif %}
+          {%endfor%}
+          {%else%}
+          <tr>
+            <td colspan="4">등록된 수업이 없습니다.</td>
+          </tr>
+          <tr>
+            <td colspan="4">
+
+            </td>
+          </tr>
+        {% endif %}
+        </tbody>
+      </table>
+    {% endblock %}
+</div>

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content%}
+<div class="container">
+    <h3><<{{u_id}} 출석 수정>></h3>
+    <br>
+    <form method="post">
+        {%csrf_token%}
+        {% include "form_errors.html" %}
+        {{form.as_p}}
+        <button type="submit">수정하기</button>
+    </form>
+</div>
+{% endblock %}

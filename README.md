@@ -10,11 +10,11 @@
 - **실행 화면**
 
 ![Untitled](https://github.com/YUDABB/AI/assets/114066269/26ae6958-6ce3-4524-8901-4890b652bd6e)
-  라즈베리파이
-![Untitled](https://github.com/YUDABB/AI/assets/114066269/ec78b4f5-56f7-45cb-8ec9-3e161d15bd58)
-  아두이노
+
+![Untitled (2)](https://github.com/YUDABB/AI/assets/114066269/07c54b5a-f3b7-4d18-9cf6-fe51084f395e)
+
 ![Untitled (1)](https://github.com/YUDABB/AI/assets/114066269/7d34d5c3-cae7-46b7-822b-b049fadeb54f)
-  AI 카메라
+
 
 - **기능**
     - 학생이 AI 카메라에 다가오면 AI 카메라가 학생인지 아닌지 판단 후 출석 체크를 한다.

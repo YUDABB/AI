@@ -1,10 +1,10 @@
-## 상세 내용
+## 📖 상세 내용
 
 - 평소 수업을 들으며 출석을 하고 도망가는 학생, 대리 출석을 해주는 학생을 보았습니다.
 - 하지만 교수님은 수업을 하시느라 그런 학생들을 전부 신경 써주지 못하셨고 저희는 수업에 도움이 되고자 출튀(출석 후 도망) 방지 시스템을 만들었습니다.
+- 
 - **구성도**
-
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/723aeb70-94d7-4deb-a98d-fc7f0d6611bb/e23e811c-057b-4180-a6d9-e84c063fce1f/Untitled.png)
+![스크린샷 2024-02-19 233728](https://github.com/YUDABB/AI/assets/114066269/9fee2dbc-8f5b-4f28-bac7-e6f7c7a724ae)
 
 - **실행 화면**
 

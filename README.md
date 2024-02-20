@@ -2,23 +2,19 @@
 
 - 평소 수업을 들으며 출석을 하고 도망가는 학생, 대리 출석을 해주는 학생을 보았습니다.
 - 하지만 교수님은 수업을 하시느라 그런 학생들을 전부 신경 써주지 못하셨고 저희는 수업에 도움이 되고자 출튀(출석 후 도망) 방지 시스템을 만들었습니다.
-- 
+  
 - **구성도**
+  
 ![스크린샷 2024-02-19 233728](https://github.com/YUDABB/AI/assets/114066269/9fee2dbc-8f5b-4f28-bac7-e6f7c7a724ae)
 
 - **실행 화면**
 
-![                         아두이노](https://prod-files-secure.s3.us-west-2.amazonaws.com/723aeb70-94d7-4deb-a98d-fc7f0d6611bb/3f9ca449-5f17-4769-87fb-a854b90cf43b/Untitled.png)
-
-                         아두이노
-
-![                       AI 카메라](https://prod-files-secure.s3.us-west-2.amazonaws.com/723aeb70-94d7-4deb-a98d-fc7f0d6611bb/19bd225c-a8cb-4a86-a073-dcb3a00d1d86/Untitled.png)
-
-                       AI 카메라
-
-![                   라즈베리파이](https://prod-files-secure.s3.us-west-2.amazonaws.com/723aeb70-94d7-4deb-a98d-fc7f0d6611bb/849377f1-65c6-42b0-a99c-2469d5d37c9b/Untitled.png)
-
-                   라즈베리파이
+![Untitled](https://github.com/YUDABB/AI/assets/114066269/26ae6958-6ce3-4524-8901-4890b652bd6e)
+  라즈베리파이
+![Untitled](https://github.com/YUDABB/AI/assets/114066269/ec78b4f5-56f7-45cb-8ec9-3e161d15bd58)
+  아두이노
+![Untitled (1)](https://github.com/YUDABB/AI/assets/114066269/7d34d5c3-cae7-46b7-822b-b049fadeb54f)
+  AI 카메라
 
 - **기능**
     - 학생이 AI 카메라에 다가오면 AI 카메라가 학생인지 아닌지 판단 후 출석 체크를 한다.
